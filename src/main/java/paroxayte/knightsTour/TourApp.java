@@ -12,6 +12,7 @@ import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
@@ -153,6 +154,7 @@ public class TourApp extends Application {
   }
 
   private void handlePointChange(ActionEvent e) {
+    clearGrid();
     Point<Integer> input = extractPoint();
     TourBE tour = new TourBE(sz);
 
@@ -163,6 +165,14 @@ public class TourApp extends Application {
       .orElseGet(() -> new ArrayList());
 
       handleResult(pointMap);
+  }
+
+  private void clearGrid() {
+    List<Node> boardChildren = board.getChildren();
+    int listSz = 0;
+    while((listSz = boardChildren.size()) > sz * sz) {
+      boardChildren.remove(listSz - 1);
+    }
   }
 
   private Point<Integer> extractPoint() {

@@ -26,7 +26,12 @@ class BoardScanner {
     return coordSpace;
   }
 
+
   Point<Integer>[] getAvailable(Point<Integer> p) {
+    return getAvailable(p, true);
+  }
+
+  private Point<Integer>[] getAvailable(Point<Integer> p, boolean sort) {
     ArrayList<Point<Integer>> tmp = new ArrayList<>();
     for (int dX = -2; dX <= 2; dX++) {
       int x2 = dX + p.x;
@@ -49,7 +54,16 @@ class BoardScanner {
 
       }
     }
+    tmp.removeIf(path::contains);
+    if(sort) {
+      warnsdorfSort(tmp);
+    }
+    
     return tmp.toArray(new Point[0]);
+  }
+
+  private void warnsdorfSort(ArrayList<Point<Integer>> viable) {
+    viable.sort((a, b) -> getAvailable(a, false).length - getAvailable(b, false).length);
   }
 
   boolean walkPath(Point<Integer> p) {
