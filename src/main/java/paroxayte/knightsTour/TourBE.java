@@ -1,6 +1,8 @@
 package paroxayte.knightsTour;
 
 import java.util.Optional;
+import java.util.Scanner;
+
 import paroxayte.util.*;
 
 public class TourBE {
@@ -37,8 +39,17 @@ public class TourBE {
   }
 
   public static void main(String[] args) {
-    TourBE testTour = new TourBE(8);
-    Optional<UniSet<Point<Integer>>> result = testTour.startTour(new Point<Integer>(0, 0));
+    Scanner stdn = new Scanner(System.in);
+
+    System.out.println("enter sz: ");
+    int sz = stdn.nextInt();
+    System.out.println("enter x: ");
+    int x = stdn.nextInt();
+    System.out.println("enter y: ");
+    int y = stdn.nextInt();
+
+    TourBE testTour = new TourBE(sz);
+    Optional<UniSet<Point<Integer>>> result = testTour.startTour(new Point<Integer>(x, y));
     result.ifPresent(System.out::println);
   }
 

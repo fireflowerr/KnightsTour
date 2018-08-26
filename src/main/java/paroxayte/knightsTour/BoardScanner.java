@@ -59,7 +59,9 @@ class BoardScanner {
       warnsdorfSort(tmp);
     }
     
-    return tmp.toArray(new Point[0]);
+    @SuppressWarnings("unchecked")
+    Point<Integer>[] toRet = tmp.toArray(new Point[0]);
+    return toRet;
   }
 
   private void warnsdorfSort(ArrayList<Point<Integer>> viable) {
