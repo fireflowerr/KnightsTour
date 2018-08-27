@@ -30,6 +30,10 @@ public class TourBE {
    *                Else return an empty Optional.
    */
   public Optional<UniSet<Point<Integer>>> startTour(Point<Integer> init) {
+    if(!inBounds(init)) {
+      throw new IllegalArgumentException("error: point " + init + " not in bounds.");
+    }
+
     BoardScanner scanner = new BoardScanner(this, init);
 
     return tour(init, scanner) ? Optional.of(scanner.getPath()) : Optional.empty();
@@ -54,6 +58,10 @@ public class TourBE {
 
     }
     return false; // catch empty result case
+  }
+
+  private boolean inBounds(Point<Integer> p) {
+    return p.x >= 0 && p.y >= 0 && p.x < sz && p.y < sz;
   }
 
   public static void main(String[] args) {

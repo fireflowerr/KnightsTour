@@ -23,6 +23,8 @@ public final class Point <T extends Number> implements Comparable<Point<T>> {
   @Override
   public boolean equals(Object b) {
     if (b.getClass().equals(Point.class)) {
+      
+      @SuppressWarnings("unchecked")
       Point<T> other = ((Point<T>) b);
       return dubX == other.dubX && dubY == other.dubY;
     }
