@@ -10,8 +10,8 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
-import paroxayte.util.Point;
-import paroxayte.util.UniSet;
+import paroxayte.knightsTour.util.Point;
+import paroxayte.knightsTour.util.UniSet;
 
 
 /**

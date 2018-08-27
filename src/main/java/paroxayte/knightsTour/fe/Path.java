@@ -5,7 +5,7 @@ import java.util.List;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Line;
-import paroxayte.util.Point;
+import paroxayte.knightsTour.util.Point;
 
 
 /**

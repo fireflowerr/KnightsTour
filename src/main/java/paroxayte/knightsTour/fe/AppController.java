@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import paroxayte.knightsTour.be.TourBE;
-import paroxayte.util.Point;
+import paroxayte.knightsTour.util.Point;
 
 
 /**

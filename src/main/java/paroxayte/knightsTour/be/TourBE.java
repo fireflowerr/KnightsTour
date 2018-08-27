@@ -3,8 +3,8 @@ package paroxayte.knightsTour.be;
 import java.util.Optional;
 import java.util.Scanner;
 
-import paroxayte.util.Point;
-import paroxayte.util.UniSet;
+import paroxayte.knightsTour.util.Point;
+import paroxayte.knightsTour.util.UniSet;
 
 /**
  * A TUI knight's tour solver.
