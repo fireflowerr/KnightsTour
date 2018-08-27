@@ -1,16 +1,17 @@
-package paroxayte.knightsTour;
+package paroxayte.knightsTour.fe;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.geometry.Bounds;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
-import javafx.geometry.Bounds;
-import javafx.scene.Node;
-import paroxayte.util.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import paroxayte.util.Point;
+import paroxayte.util.UniSet;
 
 
 public class Grid extends GridPane {
@@ -107,6 +108,10 @@ public class Grid extends GridPane {
     double y = sceneBounds.getMinY() + sceneBounds.getHeight() / 2;
 
     return new Point<Double>(x, y);
+  }
+
+  public int getSz() {
+    return sz;
   }
 
 }

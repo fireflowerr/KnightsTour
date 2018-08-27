@@ -1,7 +1,9 @@
-package paroxayte.knightsTour;
+package paroxayte.knightsTour.be;
 
 import java.util.ArrayList;
-import paroxayte.util.*;
+
+import paroxayte.util.Point;
+import paroxayte.util.UniSet;
 
 class BoardScanner {
 
@@ -9,12 +11,21 @@ class BoardScanner {
   private final UniSet<Point<Integer>> coordSpace;
   private final UniSet<Point<Integer>> path = new UniSet<>();
 
-  BoardScanner(int sz, Point<Integer> init) {
-    this.sz = sz;
+  /**
+   * Construct a scanner for a Tour.
+   * 
+   * @param  tour  The tour to be scanned.
+   * @param  init  The initial position.
+   */
+  BoardScanner(TourBE tour, Point<Integer> init) {
+    sz = tour.getSz();
     coordSpace = buildCoordSet();
     path.add(init);
   }
 
+  /**
+   * @return  Returns a coordinate set to test against.
+   */
   private UniSet<Point<Integer>> buildCoordSet() {
     UniSet<Point<Integer>> coordSpace = new UniSet<>();
 
@@ -31,6 +42,12 @@ class BoardScanner {
     return getAvailable(p, true);
   }
 
+  /**
+   * Searches for valid moves from the current position.
+   * 
+   * @param  p     The current position.
+   * @param  sort  Control structure used for producing ranked results by warnsdorf's rule.
+   */
   private Point<Integer>[] getAvailable(Point<Integer> p, boolean sort) {
     ArrayList<Point<Integer>> tmp = new ArrayList<>();
     for (int dX = -2; dX <= 2; dX++) {
@@ -64,22 +81,39 @@ class BoardScanner {
     return toRet;
   }
 
+  /**
+   * Sorts a list of results by the number of valid moves from each position, least to greatest.
+   */
   private void warnsdorfSort(ArrayList<Point<Integer>> viable) {
     viable.sort((a, b) -> getAvailable(a, false).length - getAvailable(b, false).length);
   }
 
+  /**
+   * @return  True if the movement is valid.
+   */
   boolean walkPath(Point<Integer> p) {
     return path.add(p);
   }
 
+
+  /**
+   * Removes the last result. The contract of this method is that the provided point is the last
+   * point to have been walked upon.
+   */
   void backtrack(Point<Integer> p) {
     path.remove(p);
   }
 
+  /**
+   * @return  True if the knight's path contains every coordinate in the coordinate space.
+   */
   boolean reachedEnd() {
     return path.equals(coordSpace);
   }
 
+  /**
+   * @return  The current path the knight has taken, backtracking excluded.
+   */
   UniSet<Point<Integer>> getPath() {
     return path;
   }
