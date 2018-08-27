@@ -1,6 +1,6 @@
 package paroxayte.util;
 
-// Tuple...
+// Tuple containing a number.
 public final class Point <T extends Number> implements Comparable<Point<T>> {
   public T x;
   public T y;

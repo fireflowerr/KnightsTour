@@ -6,12 +6,18 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 
+/**
+ * UI enterance point for Knight's Tour.
+ */
 public class TourApp extends Application {
 
   public static void main(String[] args) {
     launch();
   }
 
+  /**
+   * Initializes all UI elements.
+   */
   public void start(Stage stage) {
     Layout layout = new Layout();
     Scene scene = new Scene(layout, 400, 400); 
@@ -22,6 +28,9 @@ public class TourApp extends Application {
     showInstructions();
   }
 
+  /**
+   * Displays a informative pop-up explaining usage of this app.
+   */
   private void showInstructions() {
     Alert popUp = new Alert(Alert.AlertType.INFORMATION);
     popUp.setTitle("Instructions");

@@ -2,6 +2,9 @@ package paroxayte.util;
 
 import java.util.LinkedHashSet;
 
+/**
+ * Modified hashset to provide equality under .equals(...) as opposed to referential equality.
+ */
 public class UniSet<E> extends LinkedHashSet<E> {
 
     @Override

@@ -14,6 +14,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+/**
+ * UI layout for knight's tour.
+ */
 class Layout extends VBox {
 
   private static final int DEFAULT_SZ = 8;
@@ -32,12 +35,20 @@ class Layout extends VBox {
     getChildren().add(initControlArea());
   }
 
+  /**
+   * Replace the current board with one of a new size.
+   * 
+   * @param  sz  The size of the new board.
+   */
   void replaceBoard(int sz) {
     List<Node> children = getChildren();
     children.remove(0);
     children.add(0, (board = new Grid(sz)));
   }
 
+  /**
+   * Binds the layout elements to the scene for correct resizing functionality.
+   */
   void bindToScene(Scene scene) {
     board.bindGridDems(scene);
   }

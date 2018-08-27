@@ -14,6 +14,9 @@ import paroxayte.util.Point;
 import paroxayte.util.UniSet;
 
 
+/**
+ * A n x n grid.
+ */
 public class Grid extends GridPane {
 
   private final int sz;
@@ -54,6 +57,11 @@ public class Grid extends GridPane {
 
   }
 
+  /**
+   * Binds a grid to the top of a provided scene, leaving a bottom section exposed.
+   * 
+   * @param  scene  The scene to be bound to.
+   */
   public void bindGridDems(Scene scene) {
     minHeightProperty().bind(scene.heightProperty().multiply(.8));
     maxHeightProperty().bind(minHeightProperty());
@@ -79,6 +87,9 @@ public class Grid extends GridPane {
     r.maxHeightProperty().bind(minHeightProperty().multiply(pSz));
   }
 
+  /**
+   * Clears all elements from this Grid.
+   */
   public void clearGrid() {
     List<Node> children = getChildren();
     int listSz = 0;
@@ -88,12 +99,20 @@ public class Grid extends GridPane {
   }
   
 
+  /**
+   * Helper method that maps a set of Point coordinates to the respective cell.
+   * 
+   * @param  path  The set of coordinates to be mapped.
+   */
   private ArrayList<Pane> toTileMapper(UniSet<Point<Integer>> path) {
     ArrayList<Pane> tileMap = new ArrayList<>();
     path.forEach((p) -> tileMap.add((Pane)getChildren().get(sz * p.x + p.y))); //This will retrieve a GridPane child node at the coordinates (x, y)
     return tileMap;
   }
 
+  /**
+   * Maps a set of Point coordinates to the center of the cell at each coordinate in the Scene's coordinate space.
+   */
   public ArrayList<Point<Double>> toSceneMapper(UniSet<Point<Integer>> raw) {
     ArrayList<Pane> path = toTileMapper(raw);
     ArrayList<Point<Double>> coordMap = new ArrayList<>();
@@ -101,6 +120,9 @@ public class Grid extends GridPane {
     return coordMap;
   }
 
+  /**
+   * Helper method that returns the center of a provided grid cell in the Scene's coordinate space.
+   */
   private Point<Double> getTileCenter(Pane tile) {
     Bounds sceneBounds = tile.localToScene(tile.getBoundsInLocal());
 
