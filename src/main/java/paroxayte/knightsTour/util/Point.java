@@ -2,11 +2,11 @@ package paroxayte.knightsTour.util;
 
 // Tuple containing a number.
 public final class Point <T extends Number> implements Comparable<Point<T>> {
-  public T x;
-  public T y;
+  public final T x;
+  public final T y;
 
-  private double dubX;
-  private double dubY;
+  private final double dubX;
+  private final double dubY;
 
   public Point(T x, T y) {
     this.x = x;
